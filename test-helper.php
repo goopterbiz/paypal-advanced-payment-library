@@ -13,7 +13,7 @@ $softDescriptor = "PPCP_Test_getIns_This_is_for_length_test";
 // Initialize PayPalMultipartyHelper instance
 $paypalHelper = PayPalHelper::getInstance($merchantId, $isPayPalLive, $softDescriptor);
 
-// Payment information, replace with real credit card info for production
+// Payment information, replace with real credit card info for production, billing address is optional
 $testCard = [
     'number' => '4111111111111111',
     'expiry' => '2025-12',
