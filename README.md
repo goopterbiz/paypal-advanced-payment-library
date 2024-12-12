@@ -16,3 +16,5 @@ The PayPalHelper is a PHP helper class designed to simplify the integration of y
     * PayPal Checkout, Pay with Venmo, PayPal Pay Later offers, or PayPal Guest Checkout:  3.49% + $0.49 USD
     * PayPal Guest Checkout: 3.49% + $0.49 USD
     * Monthly Fee: No Fee
+
+test-helper.php - PHP unit test code for PayPalHelper.
