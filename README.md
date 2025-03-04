@@ -4,6 +4,7 @@ The PayPalHelper is a PHP helper class designed to simplify the integration of y
 
 ## Prerequisites
 - **PHP 8.0 or higher**
+- **Goopter eCommerce merchant account** (Sandbox or Live)
 - **PayPal merchant account** (Sandbox or Live)
 - **Onboarding** required. For assistance, contact [support@goopter.com](mailto:support@goopter.com).
 
