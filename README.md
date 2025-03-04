@@ -2,7 +2,30 @@ The PayPalHelper is a PHP helper class designed to simplify the integration of y
 
 **Please Note:**  An onboarding process is required before you can use this helper class.  For assistance, please contact ppcp@goopter.com, it's free!
 
-**Merchant Fees:**
+## Prerequisites
+- **PHP 8.0 or higher**
+- **PayPal merchant account** (Sandbox or Live)
+- **Onboarding** required. For assistance, contact [ppcp@goopter.com](mailto:ppcp@goopter.com).
+
+## Setup Instructions
+
+### 1. Clone or Download the Repository
+```bash
+git clone https://github.com/goopterbiz/paypal-advanced-payment-library.git
+cd paypal-advanced-payment-library
+```
+
+### 2. Configure Your PayPal Credentials
+1. Open the **`test-helper.php`** file.
+2. Update **`$merchantId`** with your merchant ID.
+3. If you are using a Live merchant ID, set **`$isPayPalLive`** to **`true`**.
+
+### 3. Run the Test Scripts
+```bash
+php test-helper.php
+```
+
+## Merchant Fees ##
 * **Canadian Merchants:** (Link to fees page: [https://www.paypal.com/ca/webapps/mpp/merchant-fees](https://www.paypal.com/ca/webapps/mpp/merchant-fees))
     * Advanced Credit and Debit Card Payments: 2.7% + $0.30 CAD
     * Advanced Credit and Debit Card Payments (American Express): 3.50%

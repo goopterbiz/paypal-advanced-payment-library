@@ -2,8 +2,7 @@
 require 'PayPalHelper.php';
 
 // PayPal credentials
-$merchantId = 'AHW9X43DTUZWN'; // <<<<<< Replace with your Merchant ID, please contact support@goopter.com to get onboard and receive your merchantId
-// $merchantId = '6S6RCMVAH36RG'; // Production Merchant ID for testing
+$merchantId = 'YOUR_MERCHANT_ID'; // <<<<<< Replace with your Merchant ID, please contact support@goopter.com to get onboard and receive your merchantId
 $isPayPalLive = false; // Set to true for PayPal live environment or false for PayPal Sandbox
 // $isPayPalLive = true; // Production environment
 
