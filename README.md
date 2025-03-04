@@ -1,12 +1,12 @@
 The PayPalHelper is a PHP helper class designed to simplify the integration of your application with PayPal's Complete Payment solution.  **There is no additional service fee** on top of the standard PayPal rates. You pay only the standard PayPal rate. 
 
-**Please Note:**  An onboard with Goopter eCommerce is required before you can use this helper class.  For assistance, please contact support@goopter.com, it's free!
+**Please Note:**  Onboarding with Goopter eCommerce is required before you can use this helper class. This library is intended for use in your secured server environment.
 
 ## Prerequisites
 - **PHP 8.0 or higher**
-- **Goopter eCommerce merchant account** (Sandbox or Live)
+- **Onboarding with Goopter eCommerce merchant account** (Sandbox or Live)
 - **PayPal merchant account** (Sandbox or Live)
-- **Onboarding** required. For assistance, contact [support@goopter.com](mailto:support@goopter.com).
+- **For assistance, please contact support@goopter.com, it's free!
 
 ## Setup Instructions
 
