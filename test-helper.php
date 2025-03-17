@@ -55,7 +55,7 @@ $testItem1 = [
     ],
     [
         "name" => "Sample Product 2",
-        "price" => 5.00,
+        "price" => 3.00,
         "quantity" => 1,
         "description" => "",
         "sku" => "JN456"
@@ -64,13 +64,13 @@ $testItem1 = [
 $testItem2 = [
     [
         'name' => 'Sample Product 1',
-        'price' => 5.00,
+        'price' => 2.50,
         'quantity' => 1,
         'category' => 'PHYSICAL_GOODS'
     ],
     [
         'name' => 'Sample Product 2',
-        'price' => 2.50,
+        'price' => 1.50,
         'quantity' => 3,
         'category' => 'PHYSICAL_GOODS'
     ]
@@ -111,8 +111,8 @@ $testItem2 = [
 
 // sale order without item information
 try {
-    $amount = 12.00; 
-    $currency = 'USD'; 
+    $amount = 3.00; 
+    $currency = 'CAD'; 
     $partnerFee = 1.00; 
     $paymentSource = [
         'card' => $testCard
@@ -134,15 +134,15 @@ try {
 
 // create and capture order without item information
 try {
-    $amount = 10.00; 
-    $currency = 'USD'; 
+    $amount = 5.00; 
+    $currency = 'CAD'; 
     $partnerFee = 2.00; 
     $paymentSource = [
         'card' => $testCard
     ];
 
     echo "Test case 2: Creating and Authorizing payment without item information...\n";
-    $createResponse = $paypalHelper->createOrder($currency, $paymentSource, $partnerFee, $amount, null, 0, null);
+    $createResponse = $paypalHelper->createOrder($currency, $paymentSource, $amount, null, 0, null);
 
     if (isset($createResponse['purchase_units'][0]['payments']['authorizations'][0]['id'])) {
         $authorizationId = $createResponse['purchase_units'][0]['payments']['authorizations'][0]['id'];
@@ -171,7 +171,7 @@ try {
 try {
     $items = $testItem1; 
     $shippingFee = 0.50; 
-    $currency = 'USD'; 
+    $currency = 'CAD'; 
     $partnerFee = 1.50; 
     $paymentSource = [
         'card' => $testCard
@@ -194,7 +194,7 @@ try {
 // create order with item
 try {
     $items = $testItem2; 
-    $currency = 'USD'; 
+    $currency = 'CAD'; 
     $partnerFee = 0.50; 
     $shippingFee = 1.00; 
 
@@ -203,7 +203,7 @@ try {
     ];
 
     echo "Test case 5: Creating and Authorizing order with items...\n";
-    $orderResponse = $paypalHelper->createOrder($currency, $paymentSource, $partnerFee, null, $items, $shippingFee, $shippingAddress);
+    $orderResponse = $paypalHelper->createOrder($currency, $paymentSource, null, $items, $shippingFee, $shippingAddress);
 
     if (isset($orderResponse['id'])) {
         echo "Order created successfully! Order ID: " . $orderResponse['id'] . "\n";
@@ -233,8 +233,8 @@ try {
 try {
     echo "Test case 7: Refund Payment\n";
     echo "Creating a sale payment...\n";
-    $currency = "USD";
-    $amount = 10.00; 
+    $currency = "CAD";
+    $amount = 5.00; 
     $partnerFee = 1.50; 
     $shippingFee = 0.50; 
 
@@ -252,7 +252,7 @@ try {
     echo "Capture ID: $captureId\n";
 
     echo "Test case 8: Partial Refund\n";
-    $partialRefundAmount = 7.00; 
+    $partialRefundAmount = 1.00; 
     $refundResponse = $paypalHelper->refundPayment($captureId, $partialRefundAmount, $currency);
 
     echo "Partial Refund Response: " . json_encode($refundResponse, JSON_PRETTY_PRINT) . "\n";
@@ -269,7 +269,7 @@ try {
 // create order without billing and shipping address
 try {
     $items = $testItem2; 
-    $currency = 'USD'; 
+    $currency = 'CAD'; 
     $partnerFee = 0.50; 
     $shippingFee = 1.00; 
 
@@ -278,7 +278,7 @@ try {
     ];
 
     echo "Test case 8: Creating and Authorizing order with items information and without address...\n";
-    $orderResponse = $paypalHelper->createOrder($currency, $paymentSource, $partnerFee, null, $items, $shippingFee);
+    $orderResponse = $paypalHelper->createOrder($currency, $paymentSource, null, $items, $shippingFee);
 
     if (isset($orderResponse['id'])) {
         echo "Order created successfully! Order ID: " . $orderResponse['id'] . "\n";
