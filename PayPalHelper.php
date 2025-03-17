@@ -76,7 +76,7 @@ class PayPalHelper {
     * @param array|null $shippingAddress The shipping address details (optional)
     * @return mixed The response from the PayPal API.
     */
-    public function createOrder($currency, $paymentSource, $partnerFee, $amount = null, $items = null, $shippingFee = 0, $shippingAddress = null) {
+    public function createOrder($currency, $paymentSource, $amount = null, $items = null, $shippingFee = 0, $shippingAddress = null) {
         $paypal_url = "/v2/checkout/orders";
         $this->log("Create Order Request URL: $paypal_url");
 
@@ -127,10 +127,6 @@ class PayPalHelper {
                 ],
                 "payee" => [
                     "merchant_id" => $this->merchantId
-                ],
-                "partner_fee" => [
-                    "currency_code" => $currency,
-                    "value" => $partnerFee
                 ],
                 "soft_descriptor" => $this->softDescriptor,
             ]],
