@@ -7,10 +7,14 @@ $isPayPalLive = false; // Set to true for PayPal live environment or false for P
 // $isPayPalLive = true; // Production environment
 
 // The Soft Descriptor is the merchant name displayed on the customer's credit card statement. Replace it with your own name, up to 22 characters.
-$softDescriptor = "PPCP_Test_getIns_This_is_for_length_test"; 
+$softDescriptor = "YOUR_SOFT_DESCRIPTOR"; 
 
 // Initialize PayPalMultipartyHelper instance
 $paypalHelper = PayPalHelper::getInstance($merchantId, $isPayPalLive, $softDescriptor);
+if (!isset($paypalHelper)) {
+    echo "Failed to init paypalHelper, please check ppcp_helper.log file.\n";
+    die();
+}
 
 // Payment information, replace with real credit card info for production, billing address is optional
 $testCard = [

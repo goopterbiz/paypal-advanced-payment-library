@@ -19,7 +19,8 @@ cd paypal-advanced-payment-library
 ### 2. Configure Your PayPal Credentials
 1. Open the **`test-helper.php`** file.
 2. Update **`$merchantId`** with your PayPal merchant ID.
-3. If you are using a Live merchant ID, set **`$isPayPalLive`** to **`true`**.
+3. Update **`$softDescriptor`** with your merchant name displayed on the customer's credit card statement.
+4. If you are using a Live merchant ID, set **`$isPayPalLive`** to **`true`**.
 
 ### 3. Run the Test Scripts
 ```bash

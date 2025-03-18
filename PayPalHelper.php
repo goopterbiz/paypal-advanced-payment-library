@@ -17,10 +17,12 @@ class PayPalHelper {
      *
      * @param string $merchantId PayPal merchant ID.
      * @param bool $isPayPalLive Indicates whether to use the live PayPal environment.
+     * @param string $softDescriptor soft descriptor for the transaction.
      */
-    private function __construct($merchantId, $isPayPalLive) {
-        $this->merchantId = $merchantId; 
+    private function __construct($merchantId, $isPayPalLive, $softDescriptor) {
+        $this->merchantId = $merchantId;
         $this->isPaypalLive = $isPayPalLive;
+        $this->softDescriptor = $softDescriptor;
     }
 
     /**
@@ -28,16 +30,24 @@ class PayPalHelper {
      *
      * @param string $merchantId PayPal merchant ID.
      * @param bool $isPayPalLive Indicates whether to use the live PayPal environment.
-     * @param string|null $softDescriptor Optional soft descriptor for the transaction.
-     * @return PayPalHelper The instance of the PayPalHelper class.
+     * @param string $softDescriptor soft descriptor for the transaction.
+     * @return PayPalHelper | null The instance of the PayPalHelper class.
      */
-    public static function getInstance($merchantId, $isPayPalLive, $softDescriptor = null) {
+    public static function getInstance($merchantId, $isPayPalLive, $softDescriptor) {
         if (self::$instance === null) {
-            self::$instance = new PayPalHelper($merchantId, $isPayPalLive);
+            self::$instance = new PayPalHelper($merchantId, $isPayPalLive, $softDescriptor);
             self::$instance->setEnvironment();
-            self::$instance->softDescriptor = $softDescriptor ? substr($softDescriptor, 0, 22) : null;
         }
-        return self::$instance;
+
+        // minimum validation for merchantId and softDescriptor
+        $error = self::$instance->validateInstance($merchantId, $softDescriptor);
+        if(isset($error)) {
+            echo $error;
+            self::$instance->log($error);
+            return null;
+        } else {
+            return self::$instance;
+        }
     }
 
     // Set the base URL for PayPal API requests based on the environment (live or sandbox).
@@ -46,6 +56,31 @@ class PayPalHelper {
         $this->ppcpAssertion = $this->generatePayPalAuthAssertion();
     }
 
+    /**
+     * Validates the provided merchant ID and soft descriptor.
+     *
+     * This method performs basic validation checks on the provided `merchantId` and `softDescriptor` values. 
+     * It checks if the `merchantId` is valid (i.e., not empty and not set to the default placeholder value), 
+     * and whether the `softDescriptor` is provided and does not exceed the maximum allowed length (22 characters).
+     * If any of these checks fail, an appropriate error message is returned.
+     *
+     * @param string $merchantId The merchant ID to validate.
+     * @param string $softDescriptor The soft descriptor to validate.
+     *
+     * @return string|null Returns an error message if validation fails, or `null` if both values are valid.
+     */
+    public function validateInstance($merchantId, $softDescriptor) {
+        $error = null;
+        if (!isset($merchantId) || $merchantId == 'YOUR_MERCHANT_ID') {
+            $error = "Replace with your Merchant ID which is valid";
+        } elseif (!isset($softDescriptor)) {
+            $error = "soft descriptor is missing, please add";
+        } elseif (strlen($softDescriptor) > 22) {
+            $error = "soft descriptor is too long, it should be up to 22 character";
+        }
+        return $error;
+    }
+    
     /**
      * Generates the PayPal authorization assertion.
      *
@@ -438,7 +473,9 @@ class PayPalHelper {
         $this->log("Request sent at: $requestTime");
 
         $headers = [
-            "Content-Type" => "application/json"
+            "Content-Type: application/json",
+            "Merchant-Id: " . $this->merchantId,
+            "Soft-Descriptor: " . $this->softDescriptor,
         ];
         
         $body = [
