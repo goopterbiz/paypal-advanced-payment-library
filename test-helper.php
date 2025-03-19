@@ -2,11 +2,12 @@
 require 'PayPalHelper.php';
 
 // PayPal credentials
-$merchantId = 'YOUR_MERCHANT_ID'; // <<<<<< Replace with your Merchant ID, please contact support@goopter.com to get onboard and receive your merchantId
+$merchantId = 'YOUR_MERCHANT_ID'; // <<<<<< Replace with your Merchant ID, please contact support@goopter.com to get onboard and receive your merchantId and soft descriptor value.
 $isPayPalLive = false; // Set to true for PayPal live environment or false for PayPal Sandbox
 // $isPayPalLive = true; // Production environment
 
-// The Soft Descriptor is the merchant name displayed on the customer's credit card statement. Replace it with your own name, up to 22 characters.
+// The Soft Descriptor is the merchant name that appears on the customer's credit card statement. 
+// Please ensure you use the soft descriptor value from the support@goopter.com, as the API call will fail if a non-defined value is used.
 $softDescriptor = "YOUR_SOFT_DESCRIPTOR"; 
 
 // Initialize PayPalMultipartyHelper instance
