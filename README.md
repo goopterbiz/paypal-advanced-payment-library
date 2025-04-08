@@ -28,7 +28,13 @@ cd paypal-advanced-payment-library
 npm install
 npm start
 ```
-### 4. for server deployment, just put the files on the Apache+PHP or Nginx+PHP server and edit SERVER_URL in /frontend/service.js
+### 4. For server deployment, just put the files on the Apache+PHP or Nginx+PHP server and edit SERVER_URL in /frontend/service.js
+
+### 5. To run the Command Line Demo, run following command to test the credit card payment:
+```bash
+cd backend
+php test-helper.php
+```
 
 ## Merchant Fees ##
 * **Canadian Merchants:** (Link to fees page: [https://www.paypal.com/ca/webapps/mpp/merchant-fees](https://www.paypal.com/ca/webapps/mpp/merchant-fees))
