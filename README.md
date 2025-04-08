@@ -23,11 +23,12 @@ cd paypal-advanced-payment-library
 3. Update **`SOFT_DESCRIPTOR`** with your merchant name displayed on the customer's credit card statement.
 4. If you are using a Live merchant ID, set **`IS_PAYPAL_LIVE`** to **`true`**.
 
-### 3. Run the Demo on local environment, for server deployment, just put on the files on the web root folder(with PHP support), open the URL 
+### 3. To run the Demo on local environment, run the following command to open the test web page:
 ```bash
 npm install
 npm start
 ```
+### 4.for server deployment, just put the files on the Apache+PHP or Nginx+PHP server
 
 ## Merchant Fees ##
 * **Canadian Merchants:** (Link to fees page: [https://www.paypal.com/ca/webapps/mpp/merchant-fees](https://www.paypal.com/ca/webapps/mpp/merchant-fees))
