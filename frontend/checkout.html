@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goopter PayPal Wallet Integration Demo Example</title>
+  </head>
+  <body>
+    <div id="item-list"></div>
+    <div id="paypal-button-container"></div>
+    <p id="result-message"></p>
+    <script type="module">
+        import { getInitData } from "./service.js";
+        import { displayItems } from "./itemList.js";
+        async function initPage() {
+            const [config, items] = await getInitData();
+            const {
+                client_id,
+                merchant_id,
+                paypal_partner_attribution_id,
+            } = config;
+
+            // load sdk
+            const paypalScript = document.createElement("script");
+            paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${client_id}&merchant-id=${merchant_id}&components=buttons&intent=capture`;
+            paypalScript.setAttribute("data-partner-attribution-id", paypal_partner_attribution_id);
+
+            document.head.appendChild(paypalScript);
+            paypalScript.addEventListener("load", () => {
+                import("./app.js")
+            });
+
+            // display selling item list
+            displayItems(items);
+        }
+
+        initPage();
+      </script>
+  </body>
+</html>
