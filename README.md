@@ -23,14 +23,14 @@ cd paypal-advanced-payment-library
 3. Update **`SOFT_DESCRIPTOR`** with your merchant name displayed on the customer's credit card statement.
 4. If you are using a Live merchant ID, set **`IS_PAYPAL_LIVE`** to **`true`**.
 
-### 3. To run the Demo on local environment, run the following command to open the test web page:
+### 3. To run the PayPal wallet payment Demo on local environment, run the following command to open the test web page:
 ```bash
 npm install
 npm start
 ```
-### 4. For server deployment, just put the files on the Apache+PHP or Nginx+PHP server and edit SERVER_URL in /frontend/service.js
+### 4. For server deployment of the PayPal wallet payment Demo, just put the files on the Apache+PHP or Nginx+PHP server and edit SERVER_URL in /frontend/service.js
 
-### 5. To run the Command Line Demo, run following command to test the credit card payment:
+### 5. To run the credit card payment demo on command line for, run following command to test the credit card payment:
 ```bash
 cd backend
 php test-helper.php
