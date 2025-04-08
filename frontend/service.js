@@ -1,8 +1,11 @@
+// update the SERVER_URL to your server URL if not running the demo on your local machine
+const SERVER_URL = "http://localhost:8000";
+
 let cachedItems = [];
 
 async function getInitData() {
   try {
-    const response = await fetch("http://localhost:8000/backend/api/config-and-products.php", {
+    const response = await fetch(`${SERVER_URL}/backend/api/config-and-products.php`, {
       method: "GET",
     });
     
@@ -26,7 +29,7 @@ async function createOrder() {
       quantity: 1
     }));
 
-    const response = await fetch("http://localhost:8000/backend/api/create-order.php", {
+    const response = await fetch(`${SERVER_URL}/backend/api/create-order.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +60,7 @@ async function createOrder() {
 
 async function onApprove(data, actions) {
   try {
-    const response = await fetch(`http://localhost:8000/backend/api/capture-order.php`, {
+    const response = await fetch(`${SERVER_URL}/backend/api/capture-order.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
