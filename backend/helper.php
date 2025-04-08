@@ -90,7 +90,7 @@ class PayPalHelper {
         $temp = array(
             "alg" => "none"
         );
-        $returnData = base64_encode(json_encode(value: $temp)) . '.';
+        $returnData = base64_encode(json_encode($temp)) . '.';
         $temp = array(
             "iss" => $this->isPaypalLive ? GOOPTER_LIVE_CLIENT_ID : GOOPTER_SANDBOX_CLIENT_ID,
             "payer_id" => $this->merchantId

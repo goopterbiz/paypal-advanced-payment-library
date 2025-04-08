@@ -28,7 +28,7 @@ cd paypal-advanced-payment-library
 npm install
 npm start
 ```
-### 4.for server deployment, just put the files on the Apache+PHP or Nginx+PHP server
+### 4. for server deployment, just put the files on the Apache+PHP or Nginx+PHP server and edit SERVER_URL in /frontend/service.js
 
 ## Merchant Fees ##
 * **Canadian Merchants:** (Link to fees page: [https://www.paypal.com/ca/webapps/mpp/merchant-fees](https://www.paypal.com/ca/webapps/mpp/merchant-fees))
