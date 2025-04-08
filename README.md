@@ -23,7 +23,7 @@ cd paypal-advanced-payment-library
 3. Update **`SOFT_DESCRIPTOR`** with your merchant name displayed on the customer's credit card statement.
 4. If you are using a Live merchant ID, set **`IS_PAYPAL_LIVE`** to **`true`**.
 
-### 3. Run the Demo
+### 3. Run the Demo on local environment, for server deployment, just put on the files on the web root folder(with PHP support), open the URL 
 ```bash
 npm install
 npm start
