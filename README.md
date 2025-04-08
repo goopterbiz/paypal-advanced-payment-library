@@ -4,6 +4,7 @@ The PayPalHelper is a PHP helper class designed to simplify the integration of y
 
 ## Prerequisites
 - **PHP 8.0 or higher**
+- **NODE 16.20.0 or higher**
 - **Onboarding with Goopter eCommerce merchant account** (Sandbox or Live)
 - **PayPal merchant account** (Sandbox or Live)
 - For assistance, please contact support@goopter.com, it's free!
@@ -17,14 +18,15 @@ cd paypal-advanced-payment-library
 ```
 
 ### 2. Configure Your PayPal Credentials
-1. Open the **`test-helper.php`** file.
-2. Update **`$merchantId`** with your PayPal merchant ID.
-3. Update **`$softDescriptor`** with your merchant name displayed on the customer's credit card statement.
-4. If you are using a Live merchant ID, set **`$isPayPalLive`** to **`true`**.
+1. Open the **`/backend/config.php`** file.
+2. Update **`MERCHANT_ID`** with your PayPal merchant ID.
+3. Update **`SOFT_DESCRIPTOR`** with your merchant name displayed on the customer's credit card statement.
+4. If you are using a Live merchant ID, set **`IS_PAYPAL_LIVE`** to **`true`**.
 
-### 3. Run the Test Scripts
+### 3. Run the Demo
 ```bash
-php test-helper.php
+npm install
+npm start
 ```
 
 ## Merchant Fees ##

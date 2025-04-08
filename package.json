@@ -1,0 +1,13 @@
+{
+  "name": "paypal-advanced-payment-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run start-backend\" \"npm run open-frontend\"",
+    "start-backend": "php -S localhost:8000 -t .",
+    "open-frontend": "cross-env-shell \"start http://localhost:8000/frontend/checkout.html || open http://localhost:8000/frontend/checkout.html\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3"
+  }
+}

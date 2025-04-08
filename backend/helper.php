@@ -103,7 +103,7 @@ class PayPalHelper {
     * Creates a PayPal order.
     *
     * @param string $currency The currency code (e.g., USD, EUR).
-    * @param array $paymentSource The payment source details.
+    * @param array | null $paymentSource The payment source details.
     * @param float $partnerFee The partner fee amount.
     * @param float|null $amount The order amount (optional).
     * @param array|null $items The list of purchase items (optional)
@@ -111,7 +111,7 @@ class PayPalHelper {
     * @param array|null $shippingAddress The shipping address details (optional)
     * @return mixed The response from the PayPal API.
     */
-    public function createOrder($currency, $paymentSource, $amount = null, $items = null, $shippingFee = 0, $shippingAddress = null) {
+    public function createOrder($currency, $paymentSource = null, $amount = null, $items = null, $shippingFee = 0, $shippingAddress = null) {
         $paypal_url = "/v2/checkout/orders";
         $this->log("Create Order Request URL: $paypal_url");
 
@@ -227,12 +227,34 @@ class PayPalHelper {
         return $this->makeRequest('POST', $paypal_url, $paypal_header, $paypal_body);
     }
 
+    /**
+    * Captures an Sale PayPal order.
+    *
+    * @param string $authorizationId The ID of the authorized payment to capture.
+    * @return mixed The response from the PayPal API.
+    */
+    public function captureSaleOrder($authorizationId) {
+        $paypal_url = "/v2/checkout/orders/{$authorizationId}/capture";
+
+        $this->log("Capture Sale Order Request URL: $paypal_url");
+
+        $paypal_header = [
+            "Content-Type" => "application/json",
+            "Merchant-Id" => $this->merchantId,
+        ];
+    
+        $paypal_body = null;
+
+        $this->log("Capture Request: " . json_encode($paypal_body));
+
+        return $this->makeRequest('POST', $paypal_url, $paypal_header, $paypal_body);
+    }
 
     /**
     * Processes a PayPal sale order.
     *
     * @param string $currency The currency code (e.g., USD, EUR).
-    * @param array $paymentSource The payment source details.
+    * @param array | null $paymentSource The payment source details.
     * @param float $partnerFee The partner fee amount.
     * @param float|null $amount The total order amount (optional).
     * @param array|null $items The list of purchase items (optional). 
