@@ -1,4 +1,4 @@
-// if you are testing in the your server, please edit the SERVER_URL
+// update the SERVER_URL to your server URL if not running the demo on your local machine
 const SERVER_URL = "http://localhost:8000";
 
 let cachedItems = [];
