@@ -13,8 +13,7 @@ async function getInitData() {
     const config = responseData["config"];
     const items = responseData["items"];
 
-    cachedItems = items || [];
-
+    window.cachedItems = items || [];
     return  [config, items];
   } catch (error) {
     console.error(error);
@@ -24,7 +23,7 @@ async function getInitData() {
 
 async function createOrder() {
   try {
-    const cart = cachedItems.map(item => ({
+    const cart = window.cachedItems.map(item => ({
       id: item.id,
       quantity: 1
     }));
@@ -111,6 +110,7 @@ async function onApprove(data, actions) {
 
 function resultMessage(message) {
   document.querySelector('#item-list').style.display = 'none';
+  document.querySelector('#applepay-container').style.display = 'none';
   document.querySelector('#paypal-button-container').style.display = 'none';
   const container = document.querySelector("#result-message");
   container.innerHTML = message;

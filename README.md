@@ -36,6 +36,13 @@ cd backend
 php test-helper.php
 ```
 
+### 6. To run Apple Pay, It requires the checkout page to be served via HTTPS and the page domain should be registered in paypal apple pay setting (Note: you can't test Apple Pay on local environment).
+How to Register Your Domain in PayPal Settings[https://youtu.be/E3gUASHQMrU?feature=shared&t=56]
+1. Log in to your PayPal merchant account at PayPal.com.
+2. In the top-right corner, click your profile icon and select Account Settings.
+3. In the bottom-left, select Payment Methods, then choose Manage Apple Pay → Add Domain.
+4. Follow the on-screen instructions in the popup.
+
 ## Merchant Fees ##
 * **Canadian Merchants:** (Link to fees page: [https://www.paypal.com/ca/webapps/mpp/merchant-fees](https://www.paypal.com/ca/webapps/mpp/merchant-fees))
     * Advanced Credit and Debit Card Payments: 2.7% + $0.30 CAD
