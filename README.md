@@ -30,7 +30,7 @@ npm start
 ```
 ### 4. For server deployment of the PayPal wallet payment Demo, just put the files on the Apache+PHP or Nginx+PHP server and edit SERVER_URL in /frontend/service.js
 
-### 5. To run the credit card payment demo on command line for, run following command to test the credit card payment:
+### 5. To run the credit card payment demo on command line, run following command to test the credit card payment:
 ```bash
 cd backend
 php test-helper.php
